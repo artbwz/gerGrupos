@@ -1,11 +1,27 @@
+{% load django_bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Gestão de Grupo, Organizador de Grupos">
+    <meta name="description" content="Sistema Web dedicado a ajudar pessoas a se organizarem em grupos">
+    <meta name="author" content="Grupo de Laboratório de Software">
     <title>Group Manager</title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
-    {%block teste%}{%endblock teste%}
+    <div class="menuEsquerda">
+        {%block menuEsquerda%}{%endblock menuEsquerda%}
+    </div>
+    <div class="conteudoPrincipal">
+        {%block conteudoPrincipal%}{%endblock conteudoPrincipal%}
+    </div>
+    <div class="menuDireita">
+        {%block menuDireita%}{%endblock menuDireita%}
+    </div>
 </body>
 </html>
