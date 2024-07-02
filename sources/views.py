@@ -1,12 +1,27 @@
 # sources/views.py
 from .forms import TarefaForm
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Usuario, Administrador, Grupo, Subgrupo, Tarefa, Avaliacao
+from .models import Usuario, Administrador, Grupo, Subgrupo, Tarefa, Avaliacao, Integrante
 from django.http import HttpResponse
 
 # Views existentes
 def index(request):
+    allGrupos = Grupo.objects.all()
+    integrantes = Integrante.objects.all()
+    tarefas = Tarefa.objects.all()
+    representante = Administrador.objects.all()
+    print(f"Grupos: ${integrantes[0]}, Integrantes: ${integrantes.count()}, Tarefas: ${tarefas}, Representante ${representante}")
     grupo1 = {
+        'groups_data': [
+            {
+                'nome':integrantes[0],
+                'integrantes': integrantes,
+                'tarefas':tarefas.count(),
+                'representante': representante
+            }
+        ]
+    }
+    grupoo1 = {
         'groups_data': [
             {'nome': 'Marcos', 'integrantes': 5, 'tarefas': 10, 'representante': {'nome': 'Rosa'},
             'integrantes': [
