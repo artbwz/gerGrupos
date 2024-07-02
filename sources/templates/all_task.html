@@ -4,6 +4,7 @@
         <tr>
             <th>Descrição</th>
             <th>Data de Entrega</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -11,6 +12,7 @@
         <tr>
             <td>{{ tarefa.descricao }}</td>
             <td>{{ tarefa.data_entrega }}</td>
+            <td><a href="?view=taskDetail&task_id={{ task.id }}">Ver Detalhes</a></td>
         </tr>
         {% empty %}
         <tr>

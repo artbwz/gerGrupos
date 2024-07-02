@@ -1,8 +1,7 @@
 <div class="group-dropdown">
     <label for="group-select">Selecionar Grupo:</label>
     <select id="group-select" onchange="updateGroup()">
-        <option value="Grupo 1">Grupo 1</option>
-        <option value="Grupo 2">Grupo 2</option>
-        <option value="Grupo 3">Grupo 3</option>
+        <option value="grupo1" {% if selected_group == 'grupo1' %}selected{% endif %}>Grupo 1</option>
+        <option value="grupo2" {% if selected_group == 'grupo2' %}selected{% endif %}>Grupo 2</option>
     </select>
 </div>

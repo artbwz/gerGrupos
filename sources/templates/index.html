@@ -25,13 +25,14 @@
             {% include 'criar_tarefa.html' %}
             {% elif view == 'subgroup' %}
             {% include 'subgroup.html' %}
+            {% elif view == 'taskDetail' %}
+            {% include 'task_detail_component.html' %}
             {% else %}
             {% include 'table_content.html' %}
             {% endif %}
    
         </div>
     </div>
-    
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

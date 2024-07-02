@@ -6,8 +6,8 @@ from django.http import HttpResponse
 
 # Views existentes
 def index(request):
-    grupo = {
-        'groups_data':[
+    grupo1 = {
+        'groups_data': [
             {'nome': 'Marcos', 'integrantes': 5, 'tarefas': 10, 'representante': {'nome': 'Rosa'},
             'integrantes': [
                 {'nome': 'Rosa'}
@@ -26,15 +26,38 @@ def index(request):
             {'nome': 'João', 'tem_subgrupo': False},
             {'nome': 'Maria', 'tem_subgrupo': False},
             {'nome': 'Pedro', 'tem_subgrupo': True},
-            # Adicione mais integrantes conforme necessário
         ],
 
-        
         'tarefas': [
             {'descricao': 'Fazer uma aplicação mobile', 'data_entrega': '01/07/2024'}
-        ] 
+        ]
+    }
 
-        
+    grupo2 = {
+        'groups_data': [
+            {'nome': 'Ana', 'integrantes': 6, 'tarefas': 12, 'representante': {'nome': 'Carlos'},
+            'integrantes': [
+                {'nome': 'Carlos'}
+            ]},
+            {'nome': 'Lucas', 'integrantes': 4, 'tarefas': 7},
+            {'nome': 'Sofia', 'integrantes': 8, 'tarefas': 20},
+        ],
+
+        'integrantes': [
+            {'nome': 'Paulo', 'tem_subgrupo': True},
+            {'nome': 'Camila', 'tem_subgrupo': False},
+            {'nome': 'Ricardo', 'tem_subgrupo': True},
+            {'nome': 'Julia', 'tem_subgrupo': False},
+            {'nome': 'Fernanda', 'tem_subgrupo': False},
+            {'nome': 'Mateus', 'tem_subgrupo': False},
+            {'nome': 'Andre', 'tem_subgrupo': False},
+            {'nome': 'Mariana', 'tem_subgrupo': False},
+            {'nome': 'Beatriz', 'tem_subgrupo': True},
+        ],
+
+        'tarefas': [
+            {'descricao': 'Desenvolver um site', 'data_entrega': '10/07/2024'}
+        ]
     }
 
     subgrupo = {'nome': 'Marcos', 'integrantes': 5, 'tarefas': 10, 'representante': {'nome': 'Rosa'},
@@ -43,11 +66,17 @@ def index(request):
             ]}
 
     view_param = request.GET.get('view', None)
+    selected_group = request.GET.get('group', 'grupo1')
+
+    grupo = grupo1 if selected_group == 'grupo1' else grupo2
+
     return render(request, 'index.html', {
-        'view': view_param ,
+        'view': view_param,
         'grupo': grupo,
-        'subgrupo' : subgrupo
-        })
+        'subgrupo': subgrupo,
+        'selected_group': selected_group
+    })
+
 
 def dashboard(request):
     view_param = request.GET.get('view', None)

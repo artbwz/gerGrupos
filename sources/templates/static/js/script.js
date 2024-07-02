@@ -1,5 +1,6 @@
-{% load static %}
+
 document.addEventListener('DOMContentLoaded', () => {
+  
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -29,15 +30,18 @@ function updateRole() {
     // Update the content or menu based on the selected role if needed
 }
 
-function updateGroup() {
-    const group = document.getElementById('group-select').value;
-    console.log(`Group selected: ${group}`);
-    // Update the content based on the selected group if needed
-}
 
 
 function enviarSolicitacao(nome) {
     // Implemente a lógica para enviar a solicitação com o nome do integrante
     console.log('Solicitação enviada para: ' + nome);
     // Aqui você pode enviar uma requisição AJAX para o backend, por exemplo
+}
+
+function updateGroup() {
+    var selectedGroup = document.getElementById("group-select").value;
+    var url = new URL(window.location.href);
+    url.searchParams.set('group', selectedGroup);
+    window.location.href = url.toString();
+    console.log("hello world")
 }

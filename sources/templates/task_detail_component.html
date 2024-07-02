@@ -1,0 +1,11 @@
+<div class="task-detail-content">
+    <h2>Detalhes da Tarefa</h2>
+    <p><strong>Descrição:</strong> {{ task.descricao }}</p>
+    <p><strong>Data de Entrega:</strong> {{ task.data_entrega }}</p>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Upload de Arquivo:</label>
+        <input type="file" name="file" id="file">
+        <button type="submit">Enviar</button>
+    </form>
+</div>

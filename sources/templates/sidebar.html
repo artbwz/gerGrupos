@@ -6,7 +6,7 @@
         </select>
     </div>
     <ul class="sidebar-menu">
-        <a href="{% url 'dashboard' %}?view=create"><li class="menu-item">Criar Grupo</li></a>
+        <a href="{% url 'dashboard' %}?view=create" class="admin-only"><li class="menu-item">Criar Grupo</li></a>
         <li class="menu-item submenu">
             Subgrupo
             <ul class="submenu-list">
@@ -21,7 +21,7 @@
         <li class="menu-item submenu">
             Tarefas
             <ul class="submenu-list">
-                <a href="{% url 'dashboard' %}?view=criartasks">
+                <a href="{% url 'dashboard' %}?view=criartasks" class="admin-only">
                     <li class="submenu-item">Adicionar Tarefas</li>
                 </a>
                 <a href="{% url 'dashboard' %}?view=tasks">

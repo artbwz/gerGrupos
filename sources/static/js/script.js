@@ -1,4 +1,3 @@
-{% load static %}
 document.addEventListener('DOMContentLoaded', () => {
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(item => {
@@ -23,14 +22,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function updateRole() {
-    const role = document.getElementById('user-role').value;
-    console.log(`Role selected: ${role}`);
-    // Update the content or menu based on the selected role if needed
-}
+
+
 
 function updateGroup() {
-    const group = document.getElementById('group-select').value;
-    console.log(`Group selected: ${group}`);
-    // Update the content based on the selected group if needed
+    var selectedGroup = document.getElementById("group-select").value;
+    var url = new URL(window.location.href);
+    url.searchParams.set('group', selectedGroup);
+    window.location.href = url.toString();
+    console.log("hello world")
 }
+
+function enviarSolicitacao(nome) {
+    // Implemente a lógica para enviar a solicitação com o nome do integrante
+    console.log('Solicitação enviada para: ' + nome);
+    // Aqui você pode enviar uma requisição AJAX para o backend, por exemplo
+}
+
+function updateRole() {
+    var userRole = document.getElementById('user-role').value;
+    var adminItems = document.querySelectorAll('.admin-only');
+    
+    if (userRole === 'Integrante') {
+        adminItems.forEach(function(item) {
+            item.style.display = 'none';
+        });
+    } else {
+        adminItems.forEach(function(item) {
+            item.style.display = 'block';
+        });
+    }
+}
+
+// Inicializa a visibilidade com base no papel selecionado ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    updateRole();
+});
