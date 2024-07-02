@@ -1,0 +1,13 @@
+<div id="createGroupForm">
+    <h2>Criar Novo Grupo</h2>
+    <form action="{% url 'submit_group' %}" method="post">
+        {% csrf_token %}
+        <label for="groupName">Nome:</label>
+        <input type="text" id="groupName" name="groupName"><br><br>
+        <label for="numSubgroups">Quantidade de Subgrupos:</label>
+        <input type="number" id="numSubgroups" name="numSubgroups"><br><br>
+        <label for="maxLimit">Limite Máximo por Subgrupo:</label>
+        <input type="number" id="maxLimit" name="maxLimit"><br><br>
+        <button type="submit">Criar</button>
+    </form>
+</div>

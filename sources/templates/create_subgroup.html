@@ -1,0 +1,28 @@
+<h2>Integrantes do Grupo</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for integrante in grupo.integrantes %}
+        <tr>
+            <td>{{ integrante.nome }}</td>
+            <td>{% if integrante.tem_subgrupo %}
+                    Com Subgrupo
+                {% else %}
+                    Sem Subgrupo
+                {% endif %}
+            </td>
+            <td>
+                {% if not integrante.tem_subgrupo %}
+                <button onclick="enviarSolicitacao('{{ integrante.nome }}')">Enviar Solicitação</button>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -19,10 +19,10 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('integrante', views.integrante, name='integrante'),
-    path('administrador', views.administrador, name='administrador'),
-
-    path('', views.index, name='index'),
+    path('', views.dashboard, name='dashboard'),
+    path('create/', views.create_group, name='create_group'),
+    path('submit/', views.submit_group, name='submit_group'),
+    
     path('integrante', views.integrante, name='integrante'),
     path('administrador', views.administrador, name='administrador'),
 

@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th>Representante</th>
+            <th>Integrantes</th>
+            <th>Tarefas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for group in grupo.groups_data %}
+        <tr>
+            
+                <td><a href="{% url 'dashboard' %}?view=subgroup">{{ group.nome }}</a></td>
+            
+                <td>{{ group.integrantes|length }} / 10</td>
+            <td>{{ group.tarefas }} / 10</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

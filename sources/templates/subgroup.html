@@ -1,0 +1,37 @@
+<div class="subgroup-component">
+    <h3>Integrantes do Subgrupo "{{ subgrupo.representante.nome }}"</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for integrante in grupo.groups_data %}
+            <tr>
+                <td>{{ integrante.nome }}</td>
+                <td>Associado ao Subgrupo</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Integrantes sem Subgrupo</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for integrante in grupo.integrantes_sem_subgrupo %}
+            <tr>
+                <td>{{ integrante.nome }}</td>
+                <td>Sem Subgrupo</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

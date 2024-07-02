@@ -1,0 +1,11 @@
+<h2>Criar Nova Tarefa</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_descricao">Descrição da Tarefa:</label><br>
+    <textarea id="id_descricao" name="descricao" maxlength="200" required style="width: 100%;" rows=5></textarea><br><br>
+
+    <label for="id_data_entrega">Data de Entrega:</label><br>
+    <input type="date" id="id_data_entrega" name="data_entrega" required><br><br>
+
+    <button type="submit">Criar Tarefa</button>
+</form>

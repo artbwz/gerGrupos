@@ -1,11 +1,87 @@
 # sources/views.py
-
+from .forms import TarefaForm
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Usuario, Administrador, Grupo, Subgrupo, Tarefa, Avaliacao
+from django.http import HttpResponse
 
 # Views existentes
 def index(request):
-    return render(request, 'pages/index.html')
+    grupo = {
+        'groups_data':[
+            {'nome': 'Marcos', 'integrantes': 5, 'tarefas': 10, 'representante': {'nome': 'Rosa'},
+            'integrantes': [
+                {'nome': 'Rosa'}
+            ]},
+            {'nome': 'Felipe', 'integrantes': 3, 'tarefas': 8},
+            {'nome': 'Jessica', 'integrantes': 7, 'tarefas': 15},
+        ],
+
+        'integrantes': [
+            {'nome': 'João', 'tem_subgrupo': True},
+            {'nome': 'Maria', 'tem_subgrupo': False},
+            {'nome': 'Pedro', 'tem_subgrupo': True},
+            {'nome': 'João', 'tem_subgrupo': False},
+            {'nome': 'Maria', 'tem_subgrupo': False},
+            {'nome': 'Pedro', 'tem_subgrupo': False},
+            {'nome': 'João', 'tem_subgrupo': False},
+            {'nome': 'Maria', 'tem_subgrupo': False},
+            {'nome': 'Pedro', 'tem_subgrupo': True},
+            # Adicione mais integrantes conforme necessário
+        ],
+
+        
+        'tarefas': [
+            {'descricao': 'Fazer uma aplicação mobile', 'data_entrega': '01/07/2024'}
+        ] 
+
+        
+    }
+
+    subgrupo = {'nome': 'Marcos', 'integrantes': 5, 'tarefas': 10, 'representante': {'nome': 'Rosa'},
+            'integrantes': [
+                {'nome': 'Marcos'}
+            ]}
+
+    view_param = request.GET.get('view', None)
+    return render(request, 'index.html', {
+        'view': view_param ,
+        'grupo': grupo,
+        'subgrupo' : subgrupo
+        })
+
+def dashboard(request):
+    view_param = request.GET.get('view', None)
+    return render(request, 'index.html', {'view': view_param})
+
+
+def criar_tarefa(request):
+    if request.method == 'POST':
+        form = TarefaForm(request.POST)
+        if form.is_valid():
+            # Processar os dados do formulário
+            descricao = form.cleaned_data['descricao']
+            data_entrega = form.cleaned_data['data_entrega']
+            # Salvar os dados no banco de dados ou em outro sistema de armazenamento
+            # Redirecionar para a página de visualização de todas as tarefas ou outra página de destino
+            return redirect('todas_tarefas')
+    else:
+        form = TarefaForm()
+    
+    return render(request, 'console/criar_tarefa.html', {'form': form})
+
+def submit_group(request):
+    if request.method == 'POST':
+        groupName = request.POST.get('groupName')
+        numSubgroups = request.POST.get('numSubgroups')
+        maxLimit = request.POST.get('maxLimit')
+
+        return HttpResponse('Grupo criado com sucesso!')
+    else:
+        return HttpResponse('Método não permitido!')
+
+def create_group(request):
+    return render(request, 'create_group.html')
+
 
 def integrante(request):
     return render(request, 'pages/integrante.html')

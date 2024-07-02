@@ -1,0 +1,33 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+        <select id="user-role" onchange="updateRole()">
+            <option value="Administrador">Administrador</option>
+            <option value="Integrante">Integrante</option>
+        </select>
+    </div>
+    <ul class="sidebar-menu">
+        <a href="{% url 'dashboard' %}?view=create"><li class="menu-item">Criar Grupo</li></a>
+        <li class="menu-item submenu">
+            Subgrupo
+            <ul class="submenu-list">
+                <a href="{% url 'dashboard' %}?view=createSubgroup">
+                    <li class="submenu-item">Adicionar Subgrupo</li>
+                </a>
+                <a href="{% url 'dashboard' %}">
+                    <li class="submenu-item">Todos os Subgrupos</li>
+                </a>
+            </ul>
+        </li>
+        <li class="menu-item submenu">
+            Tarefas
+            <ul class="submenu-list">
+                <a href="{% url 'dashboard' %}?view=criartasks">
+                    <li class="submenu-item">Adicionar Tarefas</li>
+                </a>
+                <a href="{% url 'dashboard' %}?view=tasks">
+                    <li class="submenu-item">Todas as Tarefas</li>
+                </a>
+            </ul>
+        </li>
+    </ul>
+</div>
